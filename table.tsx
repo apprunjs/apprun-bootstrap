@@ -30,7 +30,6 @@ export default class extends Component {
       </tr>)}
     </tbody>
   </table>;
-;
 
   update = {};
 

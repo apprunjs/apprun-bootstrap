@@ -6,6 +6,8 @@ const yyyymm = new Date().toISOString().substr(0, 7);
 
 export default class extends Component {
   state = {
+    id:'',
+    name: '',
     events: [
       {
         title: 'All Day Event',
@@ -64,16 +66,24 @@ export default class extends Component {
     ]
   };
 
-  view = (state) => <div id="calendar"></div>
+  view = (state) => <div style={{ 'font-size': '0.8em' }}>
+    <h5>{state.name}</h5>
+    <div id={`calendar-${state.id}`}></div>
+  </div>;
 
   update = {};
 
+  mounted = ({ id, name }) => {
+    this.setState({ ...this.state, id, name})
+  }
+
   rendered = state => {
-    $('#calendar').fullCalendar({
+    $(`#calendar-${state.id}`).fullCalendar({
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,basicWeek,basicDay'
+        right: 'month,basicWeek,basicDay',
+        title: state.name
       },
       defaultDate: `${yyyymm}-12`,
       navLinks: true, // can click day/week names to navigate views

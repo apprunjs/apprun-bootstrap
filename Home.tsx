@@ -19,7 +19,15 @@ const Widgets = () => <main className="col">
   <Row className="my-4" />
   <DataTable />
   <Row className="my-4" />
-  <Calendar />
+  <Row className="my-4">
+    <Column className="col-md-6"><Calendar id="c1" name="My Calendar" /></Column>
+    <Column className="col-md-6"><Calendar id="c2" name="Team Calendar" /></Column>
+  </Row>
+  <Row className="my-4" />
+  <Row className="my-4" />
+  <Row className="my-4" />
+  <Row className="my-4" />
+  <Row className="my-4" />
 </main>
 
 const Alerts = () => <Row className="my-4">
