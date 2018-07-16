@@ -1,5 +1,5 @@
 import app, { Component } from 'apprun';
-import { Card } from './ui';
+import { Card } from '../src/bootstrap';
 declare const d3, topojson;
 
 export default class extends Component {

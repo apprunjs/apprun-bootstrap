@@ -1,5 +1,5 @@
 import app, { Component } from 'apprun';
-import { Card } from './ui';
+import { Card } from '../src/bootstrap';
 
 declare var Chart;
 declare var moment;

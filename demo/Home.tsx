@@ -1,5 +1,5 @@
 import app, { Component } from 'apprun';
-import { Row, Column, Card, Alert, Sidebar } from './ui';
+import { Row, Column, Card, Alert, Sidebar } from '../src/bootstrap';
 import DataTable from './table';
 import Chart from './chart';
 import Calendar from './calendar';
