@@ -16,11 +16,13 @@ const chartColors = {
   grey: 'rgb(201, 203, 207)'
 };
 
-const newDateString = (days) => moment().add(days, 'd').format(timeFormat);
+const newDateString = days =>
+  moment()
+    .add(days, 'd')
+    .format(timeFormat);
 const randomScalingFactor = (min = -100, max = 100) => Math.random() * (max - min) + min;
 
 export default class extends Component {
-
   state = {
     data: {
       type: 'bar',
@@ -34,77 +36,93 @@ export default class extends Component {
           newDateString(5),
           newDateString(6)
         ],
-        datasets: [{
-          type: 'bar',
-          label: 'Dataset 1',
-          backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-          borderColor: chartColors.red,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ],
-        }, {
-          type: 'bar',
-          label: 'Dataset 2',
-          backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-          borderColor: chartColors.blue,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ],
-        }, {
-          type: 'line',
-          label: 'Dataset 3',
-          backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-          borderColor: chartColors.green,
-          fill: false,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ],
-        }]
+        datasets: [
+          {
+            type: 'bar',
+            label: 'Dataset 1',
+            backgroundColor: color(chartColors.red)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: chartColors.red,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          },
+          {
+            type: 'bar',
+            label: 'Dataset 2',
+            backgroundColor: color(chartColors.blue)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: chartColors.blue,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          },
+          {
+            type: 'line',
+            label: 'Dataset 3',
+            backgroundColor: color(chartColors.green)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: chartColors.green,
+            fill: false,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          }
+        ]
       },
       options: {
         title: {
           text: 'Chart.js Combo Time Scale'
         },
         scales: {
-          xAxes: [{
-            type: 'time',
-            display: true,
-            time: {
-              format: timeFormat,
-             }
-          }],
-        },
+          xAxes: [
+            {
+              type: 'time',
+              display: true,
+              time: {
+                format: timeFormat
+              }
+            }
+          ]
+        }
       }
     }
   };
 
-  view = _ => <Card header="Chart JS">
-    <canvas id="canvas"></canvas>
-  </Card>;
+  view = state => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    state.chart = new Chart(ctx, state.data);
+    return (
+      <Card header="Chart JS">
+        {canvas}
+      </Card>
+    );
+  };
 
-  update = {};
-
-  rendered = ({ data }) => {
-    const ctx = (document.getElementById('canvas') as any).getContext('2d');
-    new Chart(ctx, data);
+  unload = state => {
+    state.chart?.destroy();
+    console.log('chart destroyed');
   }
 }
-

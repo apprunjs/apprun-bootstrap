@@ -71,11 +71,7 @@ export default class extends Component {
     <div id={`calendar-${state.id}`}></div>
   </div>;
 
-  update = {};
-
-  mounted = ({ id, name }) => {
-    this.setState({ ...this.state, id, name})
-  }
+  mounted = ({ id, name }) => ({ ...this.state, id, name})
 
   rendered = state => {
     $(`#calendar-${state.id}`).fullCalendar({
