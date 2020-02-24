@@ -43,7 +43,7 @@ const view = state => <div className="container">
   <div className="container" id="my-app"></div>
 </div>
 
-app.start('main', {}, view, {})
+app.start(document.body, {}, view, {})
 
 import Home from './Home';
 import About from './About';
