@@ -4,50 +4,27 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "apprun": "^2.22.1",
-    "@types/jest": "^24.0.22",
-    "jest": "^24.9.0",
+    "apprun": "^2.22.2",
     "source-map-loader": "^0.2.4",
-    "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "typescript": "^3.8.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "test": "jest --watch",
     "start": "webpack-dev-server --mode development",
     "build": "webpack -p --mode production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yysun/apprun-bootstrap.git"
+    "url": "git+https://github.com/apprunjs/apprun-bootstrap.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yysun/apprun-bootstrap/issues"
+    "url": "https://github.com/apprunjs/apprun-bootstrap/issues"
   },
-  "homepage": "https://github.com/yysun/apprun-bootstrap#readme",
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "globals": {
-      "ts-jest": {
-        "enableTsDiagnostics": true
-      }
-    }
-  }
+  "homepage": "https://github.com/apprunjs/apprun-bootstrap#readme"
 }
