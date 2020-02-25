@@ -54,7 +54,7 @@ export default class extends Component {
   );
 
   mounted = state =>
-    state.features ? state :
+    state?.features ? state :
     new Promise((resolve, reject) => {
       d3.json('./world-110m.json', (error, topo) => {
         if (error) throw reject(error);
