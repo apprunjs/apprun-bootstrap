@@ -115,8 +115,8 @@ export default class extends Component {
     const ctx = canvas.getContext('2d');
     state.chart = new Chart(ctx, state.data);
     return (
-      <Card header="Chart JS">
-        {canvas}
+      <Card header={<div>Chart JS</div>}>
+        <div>{canvas}</div>
       </Card>
     );
   };

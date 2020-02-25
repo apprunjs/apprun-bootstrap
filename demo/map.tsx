@@ -47,20 +47,23 @@ const map = (element, features) => {
 export default class extends Component {
   state = {};
 
-  view = features => (
-    <Card header={<div id="map-text">D3 Map</div>}>
+  view = ({ features }) => (
+    <Card header={<div>D3 Map</div>}>
       <svg ref={el => map(el, features)}></svg>
     </Card>
   );
 
-  mounted = state =>
-    state?.features ? state :
-    new Promise((resolve, reject) => {
-      d3.json('./world-110m.json', (error, topo) => {
-        if (error) throw reject(error);
-        const features = topojson.feature(topo, topo.objects.countries)
-          .features;
-        resolve(features);
+  mounted = async (_, __, state) => {
+    if (!state.features) {
+      state.features = await new Promise((resolve, reject) => {
+        d3.json('./world-110m.json', (error, topo) => {
+          if (error) throw reject(error);
+          const features = topojson.feature(topo, topo.objects.countries)
+            .features;
+          resolve(features);
+        });
       });
-    });
+    }
+    return state;
+  }
 }
