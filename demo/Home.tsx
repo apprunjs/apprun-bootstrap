@@ -90,7 +90,7 @@ export default class extends Component {
   </Dashboard>
 
   update = {
-    '#Home': state => state,
+    '#, #Home': state => state,
   }
 }
 

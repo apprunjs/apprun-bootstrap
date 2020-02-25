@@ -1,7 +1,5 @@
 import app from 'apprun';
 
-app.on('#', _ => app.run('#Home'))
-
 app.on('//', route => {
   const menus = document.querySelectorAll('.navbar-nav li');
   for (let i = 0; i < menus.length; ++i) menus[i].classList.remove('active');
