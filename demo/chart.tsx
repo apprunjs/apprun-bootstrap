@@ -20,7 +20,8 @@ const newDateString = days =>
   moment()
     .add(days, 'd')
     .format(timeFormat);
-const randomScalingFactor = (min = -100, max = 100) => Math.random() * (max - min) + min;
+const randomScalingFactor = (min = -100, max = 100) =>
+  Math.random() * (max - min) + min;
 
 export default class extends Component {
   state = {
@@ -124,5 +125,5 @@ export default class extends Component {
   unload = state => {
     state.chart?.destroy();
     console.log('chart destroyed');
-  }
+  };
 }
