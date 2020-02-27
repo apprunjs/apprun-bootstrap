@@ -7,7 +7,7 @@ app.on('//', route => {
   item && item.parentElement.classList.add('active');
 });
 
-const view = state => (
+const view = () => (
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">

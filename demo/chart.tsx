@@ -1,8 +1,8 @@
 import app, { Component } from 'apprun';
 import { Card } from '../src/bootstrap';
 
-declare var Chart;
-declare var moment;
+declare let Chart;
+declare let moment;
 
 const timeFormat = 'MM/DD/YYYY HH:mm';
 const color = Chart.helpers.color;

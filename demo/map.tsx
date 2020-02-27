@@ -46,7 +46,7 @@ const map = (element, features) => {
 
 export default class extends Component {
   state = {};
-
+  
   view = ({ features }) => (
     <Card header={<div>D3 Map</div>}>
       <svg ref={el => map(el, features)}></svg>
@@ -65,5 +65,5 @@ export default class extends Component {
       });
     }
     return state;
-  }
+  };
 }

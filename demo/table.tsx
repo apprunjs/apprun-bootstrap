@@ -1,11 +1,11 @@
 import app, { Component } from 'apprun';
 import data from './table-data';
-declare var $;
+declare let $;
 
 // checkout available options: https://datatables.net/reference/option/
 const DataTable = options => table =>
   !$.fn.dataTable.isDataTable(table) && $(table).DataTable(options);
-  
+
 app.on('$', ({ key, props }) => {
   key === '$data-table' && (props.ref = DataTable(props[key]));
 });

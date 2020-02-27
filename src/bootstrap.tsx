@@ -1,6 +1,6 @@
 import app from 'apprun';
 
-const mergeClassName = (name, props) => {
+const mergeClassName = (name, props): string => {
   if (props?.class) {
     name = `${name} ${props.class}`;
     delete props.class;
@@ -67,7 +67,7 @@ export const Menus = ({ menus }) => (
   </ul>
 );
 
-export const Sidebar = (props, children) => (
+export const Sidebar = props => (
   <aside class="col-lg-2 p-0">
     <nav class="navbar navbar-expand align-items-start navbar-light">
       <div class="collapse navbar-collapse">

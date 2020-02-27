@@ -95,7 +95,7 @@ const menus = [
 export default class extends Component {
   state = 'Dashboard';
 
-  view = state => (
+  view = () => (
     <Dashboard>
       <Sidebar menus={menus} />
       <Widgets></Widgets>

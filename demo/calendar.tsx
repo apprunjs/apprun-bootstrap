@@ -1,6 +1,6 @@
 import app, { Component } from 'apprun';
 
-declare var $;
+declare let $;
 
 const yyyymm = new Date().toISOString().substr(0, 7);
 
