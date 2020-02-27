@@ -2,41 +2,34 @@ import app, { Component } from 'apprun';
 import data from './table-data';
 declare var $;
 
+// checkout available options: https://datatables.net/reference/option/
+const DataTable = options => table =>
+  !$.fn.dataTable.isDataTable(table) && $(table).DataTable(options);
+  
+app.on('$', ({ key, props }) => {
+  key === '$data-table' && (props.ref = DataTable(props[key]));
+});
+
+const columns = [
+  { title: 'Name', data: 'name' },
+  { title: 'Position', data: 'position' },
+  { title: 'Office', data: 'office' },
+  { title: 'Age', data: 'age' },
+  { title: 'Start date', data: 'date' },
+  { title: 'Salary', data: 'salary' }
+];
+
 export default class extends Component {
-  state = {
-    data
-  };
+  state = { data };
 
   view = ({ data }) => (
-    <table id="table-example" class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Office</th>
-          <th>Age</th>
-          <th>Start date</th>
-          <th>Salary</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(p => (
-          <tr>
-            <td>{p.name}</td>
-            <td>{p.position}</td>
-            <td>{p.office}</td>
-            <td>{p.age}</td>
-            <td>{p.date}</td>
-            <td>{p.salary}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <table
+      class="table w-100 table-striped table-bordered"
+      $data-table={{
+        data,
+        columns,
+        pageLength: 10
+      }}
+    />
   );
-
-  update = {};
-
-  rendered = state => {
-    $('#table-example').DataTable();
-  };
 }
