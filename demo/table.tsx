@@ -22,14 +22,16 @@ const columns = [
 export default class extends Component {
   state = { data };
 
-  view = ({ data }) => (
+  view = state => state.dt || (
+    <div ref={el => state.dt = el}>
     <table
       class="table w-100 table-striped table-bordered"
       $data-table={{
-        data,
+        data: state.data,
         columns,
         pageLength: 10
       }}
-    />
+      />
+    </div>
   );
 }
