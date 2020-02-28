@@ -11,17 +11,17 @@ const mergeClassName = (name, props): string => {
   return name;
 };
 export const Row = (props, children) => (
-  <div class={mergeClassName('row', props)}>{children || ''}</div>
+  <div class={mergeClassName('row', props)} {...props}>{children || ''}</div>
 );
 
 export const Column = (props, children) => (
-  <div class={mergeClassName('col', props)}>{children || ''}</div>
+  <div class={mergeClassName('col', props)} {...props}>{children || ''}</div>
 );
 
 export const Card = (props, children) => {
   props = props || {};
   return (
-    <div class={mergeClassName('card', props)}>
+    <div class={mergeClassName('card', props)} {...props}>
       {props.header ? <div class="card-header">{props.header}</div> : ''}
       {children || ''}
       {props.body ? <div class="card-body">{props.body}</div> : ''}
@@ -31,7 +31,7 @@ export const Card = (props, children) => {
 };
 
 export const Alert = (props, children) => (
-  <div class={mergeClassName('alert', props)} role="alert">
+  <div class={mergeClassName('alert', props)} role="alert" {...props}>
     {children || ''}
   </div>
 );
