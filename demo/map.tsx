@@ -46,12 +46,13 @@ const map = (element, features) => {
 
 export default class extends Component {
   state = {};
-  
-  view = ({ features }) => (
-    <Card header={<div>D3 Map</div>}>
-      <svg ref={el => map(el, features)}></svg>
-    </Card>
-  );
+
+  view = state =>
+    state.map_card || (
+      <Card header={<div id="map-text">D3 Map</div>} ref={el => (state.map_card = el)}>
+        <svg ref={el => map(el, state.features)}></svg>
+      </Card>
+    );
 
   mounted = async (_, __, state) => {
     if (!state.features) {
